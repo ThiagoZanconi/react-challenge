@@ -1,14 +1,20 @@
-import { useState } from 'react'
+import type { Job } from '../entities/Job';
+import JobCard from './JobCard';
 
-function JobList() {
-  const [count, setCount] = useState(0)
+type ChildProps = {
+  jobs: Array<Job> | null;
+};
 
+const JobList = ({ jobs }: ChildProps) => {
   return (
     <>
-      <div>
-        
-      </div>
-      
+        <div className='mt-20'>
+            {
+                jobs?.map(job =>
+                    <JobCard job = {job}></JobCard>
+                )
+            } 
+        </div>
     </>
   )
 }

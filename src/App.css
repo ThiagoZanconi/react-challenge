@@ -30,17 +30,20 @@
 .input-custom{
   font-size: larger;
   margin-left: 0;
-  width: 50%;
+  width: 100%;
+  box-sizing: border-box;
   background-color: white;
   border-color: black;
   color: black;
-  border: 8px;
+  border: 1px solid black;
   font-weight: 500;
   border-radius: 8px;
   padding-left: 15px;
   padding-right: 15px;
   padding-top: 8px;
   padding-bottom: 8px;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 .button-custom{
@@ -66,12 +69,54 @@
   background-color: rgb(0, 255, 0);
 }
 
+.submit-custom{
+  color: white;
+  cursor: pointer;
+  font-weight: bold;
+  font-size: larger;
+  width: fit-content;
+  background-color: rgb(72, 151, 72);
+  border: none;
+  border-radius: 8px;
+  box-shadow: burlywood;
+  display: flex;
+  padding-left: 15px;
+  padding-right: 15px;
+  padding-top: 8px;
+  padding-bottom: 8px;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 10px;
+  transition: background-color 0.5s ease-in-out;
+}
+
+.submit-custom:hover{
+  background-color: rgb(0, 255, 0);
+}
+
+.card-custom{
+  width: 75%;
+  background-color: rgb(184, 129, 129);
+  border-radius: 8px;
+  padding-left: 15px;
+  padding-right: 15px;
+  padding-top: 8px;
+  padding-bottom: 8px;
+  margin-top: 3%;
+  margin-left: auto;
+  margin-right: auto;
+}
+
 .flex{
   display: flex;
 }
 
-.ml-50{
-  margin-left: 50px;
+.w-75{
+  width: 75%;
+}
+.mx-auto{
+  margin-left: auto;
+  margin-right: auto;
 }
 
 .mt-20{
