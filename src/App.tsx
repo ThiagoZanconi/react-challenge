@@ -9,12 +9,7 @@ import { getJobs } from './services/CandidateAPIService'
 function App() {
   const [candidateDataGet, setCandidateDataGet] = useState<CandidateDataGet | null>(null)
   const [jobs, setJobs] = useState<Array<Job> | null>(null)
-
-  const jobsTest: Array<Job> = [
-    { id: 1, title: "Frontend Developer" },
-    { id: 2, title: "Backend Developer" },
-    { id: 3, title: "Fullstack Developer" }
-  ];
+  const [jobGetError, setJobGetError] = useState<string | null>(null)
 
   async function onGetCandidateData(data: CandidateDataGet){
     setCandidateDataGet(data)
@@ -22,7 +17,7 @@ function App() {
       const jobs = await getJobs();
       setJobs(jobs)
     } catch (error) {
-      console.log("Hubo un error:", error);
+      setJobGetError("Error:"+error);
     }
   }
 
@@ -31,16 +26,20 @@ function App() {
       <div>
         <h1 className="h1-custom">Nimble Gravity React Challenge</h1>
         <GetCandidateData onGetCandidateData={onGetCandidateData}></GetCandidateData>
-        <div className='mx-auto w-75 color-black font-bold'> {candidateDataGet!=null ? "Logged As:"+candidateDataGet.email : "Not logged in"}</div>
+        <div className='mx-auto w-75 color-black font-bold mb-40'> {candidateDataGet!=null ? "Logged As:"+candidateDataGet.email : "Not logged in"}</div>
         {
-          jobsTest!=null && (
+          (jobs!=null && candidateDataGet!=null) && (
             <>
             <div className='w-75 mx-auto mt-20'>
               <div className='label-custom2'>Available Jobs</div>
             </div>
-              <JobList jobs={jobsTest}></JobList>
+              <JobList uuid={candidateDataGet.uuid} candidateId={candidateDataGet.candidateId} jobs={jobs}></JobList>
             </>
-            
+          )
+        }
+        {
+          jobGetError!=null && (
+            <p className='w-75 mx-auto mt-20 color-red font-bold'>{jobGetError}</p>
           )
         }
       </div>

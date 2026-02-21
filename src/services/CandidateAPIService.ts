@@ -62,7 +62,7 @@ export const getJobs = async (): Promise<Array<Job>> => {
 
 export const postCandidate = async (
     candidateData: CandidateDataPost
-) => {
+): Promise<boolean> => {
     const response = await fetch("https://api.com/orders", {
     method: "POST",
     headers: {
@@ -71,5 +71,5 @@ export const postCandidate = async (
     body: JSON.stringify(candidateData)
     });
 
-    const result = await response.json();
+    return response.ok
 }

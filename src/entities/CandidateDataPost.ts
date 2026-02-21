@@ -1,6 +1,6 @@
 export interface CandidateDataPost {
   uuid: string;
-  jobId: string;
+  jobId: number;
   candidateId: string;
   repoUrl: string;
 }

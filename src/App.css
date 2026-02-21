@@ -129,6 +129,14 @@
   color: black;
 }
 
+.color-red{
+  color: red;
+}
+
+.color-green{
+  color: green;
+}
+
 .font-bold{
   font-weight: bold;
 }
