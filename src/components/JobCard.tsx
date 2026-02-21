@@ -11,10 +11,11 @@ type ChildProps = {
 
 const JobCard = ({ uuid, candidateId, job }: ChildProps) => {
     const[result, setResult] = useState<boolean | null>(null)
+    const [repository, setRepository] = useState<string>("");
 
-    async function onClick(){
-        let repository = document.getElementById("repositoryInput")?.textContent
-        if(repository!=null){
+    const onSubmit = async (e: React.SyntheticEvent<HTMLFormElement>) => {
+        e.preventDefault();
+        if(repository!=""){
             let data: CandidateDataPost = {
                 uuid : uuid,
                 jobId: job.id,
@@ -29,12 +30,13 @@ const JobCard = ({ uuid, candidateId, job }: ChildProps) => {
     return (
         <>
             <div className='card-custom'>
-                <form className="p-0" onSubmit={onClick}>
+                <form className="p-0" onSubmit={onSubmit}>
                     <div className="label-custom">{job.title}</div>
                     <input
                         className="input-custom"
                         id="repositoryInput"
                         type="link"
+                        onChange={(e) => setRepository(e.target.value)}
                         placeholder="Respository Link"
                         required
                     />
@@ -43,6 +45,11 @@ const JobCard = ({ uuid, candidateId, job }: ChildProps) => {
                     </button>
                 </form>
             </div>
+            {
+                result!=null && (
+                    <p className={`w-75 mx-auto mt-20 ${result ? "color-green" : "color-red"} font-bold`}>{result ? "Success" : "Error" }</p>
+                )
+            }
         </>
     )
 }

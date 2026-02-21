@@ -27,7 +27,9 @@ export const getCandidateData = async (
       throw new Error(errorMessage);
     }
 
-    return (await response.json()) as CandidateDataGet;
+    let data = (await response.json()) as CandidateDataGet;
+    console.log(data);
+    return data;
 
   } catch (error) {
     console.error("GET Candidate Data Error:", error);
@@ -51,8 +53,9 @@ export const getJobs = async (): Promise<Array<Job>> => {
 
       throw new Error(errorMessage);
     }
-
-    return (await response.json()) as Array<Job>;
+    let data = (await response.json()) as Array<Job>;
+    console.log(data);
+    return data
 
   } catch (error) {
     console.error("GET Jobs Error:", error);
