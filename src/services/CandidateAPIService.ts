@@ -66,14 +66,22 @@ export const getJobs = async (): Promise<Array<Job>> => {
 export const postCandidate = async (
     candidateData: CandidateDataPost
 ): Promise<boolean> => {
-    const url = `${BASE_API_URL}/api/candidate/apply-to-job`;
-    const response = await fetch(url, {
-    method: "POST",
-    headers: {
-        "Content-Type": "application/json"
-    },
-    body: JSON.stringify(candidateData)
-    });
+    try {
+        console.log(candidateData)
+        const url = `${BASE_API_URL}/api/candidate/apply-to-job`;
+        const response = await fetch(url, {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify(candidateData)
+        });
+        const text = await response.text();
+        console.log("Response body:", text);
 
-    return response.ok
+        return response.ok
+    } catch (error) {
+        console.error("Post Candidate Error:", error);
+        throw error;
+    }
 }

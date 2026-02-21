@@ -6,10 +6,11 @@ import { useState } from 'react'
 type ChildProps = {
     uuid: string
     candidateId: string
+    applicationId: string
     job: Job
 };
 
-const JobCard = ({ uuid, candidateId, job }: ChildProps) => {
+const JobCard = ({ uuid, candidateId, applicationId, job }: ChildProps) => {
     const[result, setResult] = useState<boolean | null>(null)
     const [repository, setRepository] = useState<string>("");
 
@@ -20,6 +21,7 @@ const JobCard = ({ uuid, candidateId, job }: ChildProps) => {
                 uuid : uuid,
                 jobId: job.id,
                 candidateId: candidateId,
+                applicationId: applicationId,
                 repoUrl: repository
             }
             let res: boolean = await postCandidate(data)

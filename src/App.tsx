@@ -33,7 +33,7 @@ function App() {
             <div className='w-75 mx-auto mt-20'>
               <div className='label-custom2'>Available Jobs</div>
             </div>
-              <JobList uuid={candidateDataGet.uuid} candidateId={candidateDataGet.candidateId} jobs={jobs}></JobList>
+              <JobList uuid={candidateDataGet.uuid} candidateId={candidateDataGet.candidateId} applicationId={candidateDataGet.applicationId} jobs={jobs}></JobList>
             </>
           )
         }
