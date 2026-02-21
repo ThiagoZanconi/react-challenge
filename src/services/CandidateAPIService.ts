@@ -1,10 +1,12 @@
-import type { CandidateData } from "../entities/CandidateData";
+import type { CandidateDataGet } from "../entities/CandidateDataGet";
+import type { CandidateDataPost } from "../entities/CandidateDataPost";
+import type { Job } from "../entities/Job";
 
 const BASE_API_URL = "https://botfilter-h5ddh6dye8exb7ha.centralus-01.azurewebsites.net";
 
 export const getCandidateData = async (
   email: string
-): Promise<CandidateData> => {
+): Promise<CandidateDataGet> => {
   try {
     if (!email) {
       throw new Error("Email not provided");
@@ -25,10 +27,49 @@ export const getCandidateData = async (
       throw new Error(errorMessage);
     }
 
-    return (await response.json()) as CandidateData;
+    return (await response.json()) as CandidateDataGet;
 
   } catch (error) {
     console.error("GET Candidate Data Error:", error);
     throw error;
   }
 };
+
+export const getJobs = async (): Promise<Array<Job>> => {
+  try {
+    const url = `${BASE_API_URL}/api/jobs/get-list`;
+
+    const response = await fetch(url);
+
+    if (!response.ok) {
+      let errorMessage = "Error fetching jobs";
+
+      try {
+        const errorData = await response.json();
+        errorMessage = errorData.message || errorMessage;
+      } catch {}
+
+      throw new Error(errorMessage);
+    }
+
+    return (await response.json()) as Array<Job>;
+
+  } catch (error) {
+    console.error("GET Jobs Error:", error);
+    throw error;
+  }
+};
+
+export const postCandidate = async (
+    candidateData: CandidateDataPost
+) => {
+    const response = await fetch("https://api.com/orders", {
+    method: "POST",
+    headers: {
+        "Content-Type": "application/json"
+    },
+    body: JSON.stringify(candidateData)
+    });
+
+    const result = await response.json();
+}

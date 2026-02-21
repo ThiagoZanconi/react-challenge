@@ -1,4 +1,4 @@
-export interface CandidateData {
+export interface CandidateDataGet {
   uuid: string;
   candidateId: string;
   applicationId: string;

@@ -1,5 +1,6 @@
 import { useState } from 'react'
 import './App.css'
+import GetCandidateData from './components/GetCandidateData'
 
 function App() {
   const [count, setCount] = useState(0)
@@ -7,7 +8,8 @@ function App() {
   return (
     <>
       <div>
-        <h1 className="h1-custom">Nimnble Gravity React Challenge</h1>
+        <h1 className="h1-custom">Nimble Gravity React Challenge</h1>
+        <GetCandidateData></GetCandidateData>
       </div>
       
     </>
