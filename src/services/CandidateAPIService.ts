@@ -66,7 +66,8 @@ export const getJobs = async (): Promise<Array<Job>> => {
 export const postCandidate = async (
     candidateData: CandidateDataPost
 ): Promise<boolean> => {
-    const response = await fetch("https://api.com/orders", {
+    const url = `${BASE_API_URL}/api/candidate/apply-to-job`;
+    const response = await fetch(url, {
     method: "POST",
     headers: {
         "Content-Type": "application/json"
