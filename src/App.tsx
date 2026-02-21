@@ -26,7 +26,7 @@ function App() {
       <div>
         <h1 className="h1-custom">Nimble Gravity React Challenge</h1>
         <GetCandidateData onGetCandidateData={onGetCandidateData}></GetCandidateData>
-        <div className='mx-auto w-75 color-black font-bold mb-40'> {candidateDataGet!=null ? "Logged As:"+candidateDataGet.email : "Not logged in"}</div>
+        <div className='mx-auto w-75 color-black font-bold mb-40'> {candidateDataGet!=null ? "Logged As: "+candidateDataGet.email : "Not logged in"}</div>
         {
           (jobs!=null && candidateDataGet!=null) && (
             <>
