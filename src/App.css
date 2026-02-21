@@ -27,6 +27,20 @@
   padding-bottom: 8px;
 }
 
+.label-custom2{
+  color: bisque;
+  width: fit-content;
+  font-size: large;
+  font-weight: bold;
+  background-color: black;
+  border-radius: 8px;
+  display: flex;
+  padding-left: 15px;
+  padding-right: 15px;
+  padding-top: 8px;
+  padding-bottom: 8px;
+}
+
 .input-custom{
   font-size: larger;
   margin-left: 0;
@@ -102,13 +116,21 @@
   padding-right: 15px;
   padding-top: 8px;
   padding-bottom: 8px;
-  margin-top: 3%;
+  margin-top: 10px;
   margin-left: auto;
   margin-right: auto;
 }
 
 .flex{
   display: flex;
+}
+
+.color-black{
+  color: black;
+}
+
+.font-bold{
+  font-weight: bold;
 }
 
 .w-75{
@@ -119,6 +141,15 @@
   margin-right: auto;
 }
 
+.px-auto{
+  padding-left: auto;
+  padding-right: auto;
+}
+
 .mt-20{
   margin-top: 20px;
+}
+
+.mb-40{
+  margin-bottom: 40px;
 }

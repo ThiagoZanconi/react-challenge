@@ -28,12 +28,19 @@ function App() {
 
   return (
     <>
-      <div className='mx-auto'>
+      <div>
         <h1 className="h1-custom">Nimble Gravity React Challenge</h1>
         <GetCandidateData onGetCandidateData={onGetCandidateData}></GetCandidateData>
+        <div className='mx-auto w-75 color-black font-bold'> {candidateDataGet!=null ? "Logged As:"+candidateDataGet.email : "Not logged in"}</div>
         {
           jobsTest!=null && (
-            <JobList jobs={jobsTest}></JobList>
+            <>
+            <div className='w-75 mx-auto mt-20'>
+              <div className='label-custom2'>Available Jobs</div>
+            </div>
+              <JobList jobs={jobsTest}></JobList>
+            </>
+            
           )
         }
       </div>
