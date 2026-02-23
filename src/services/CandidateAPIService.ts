@@ -11,9 +11,7 @@ export const getCandidateData = async (
     if (!email) {
       throw new Error("Email not provided");
     }
-
     const url = `${BASE_API_URL}/api/candidate/get-by-email?email=${encodeURIComponent(email)}`;
-
     const response = await fetch(url);
 
     if (!response.ok) {
@@ -28,7 +26,6 @@ export const getCandidateData = async (
     }
 
     let data = (await response.json()) as CandidateDataGet;
-    console.log(data);
     return data;
 
   } catch (error) {
@@ -40,7 +37,6 @@ export const getCandidateData = async (
 export const getJobs = async (): Promise<Array<Job>> => {
   try {
     const url = `${BASE_API_URL}/api/jobs/get-list`;
-
     const response = await fetch(url);
 
     if (!response.ok) {
@@ -54,7 +50,6 @@ export const getJobs = async (): Promise<Array<Job>> => {
       throw new Error(errorMessage);
     }
     let data = (await response.json()) as Array<Job>;
-    console.log(data);
     return data
 
   } catch (error) {
@@ -67,7 +62,6 @@ export const postCandidate = async (
     candidateData: CandidateDataPost
 ): Promise<boolean> => {
     try {
-        console.log(candidateData)
         const url = `${BASE_API_URL}/api/candidate/apply-to-job`;
         const response = await fetch(url, {
             method: "POST",
@@ -76,8 +70,6 @@ export const postCandidate = async (
             },
             body: JSON.stringify(candidateData)
         });
-        const text = await response.text();
-        console.log("Response body:", text);
 
         return response.ok
     } catch (error) {
